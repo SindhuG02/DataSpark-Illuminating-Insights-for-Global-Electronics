@@ -1,0 +1,46 @@
+use Global_Electronics
+
+
+select sales.order_date,
+sales.productkey,
+Products.product_name,
+Products.brand,
+Products.unit_price_usd,
+sales.quantity,
+(Products.unit_price_usd * sales.quantity) as price
+from Sales inner join Products on Products.productkey=Sales.productkey
+
+
+select order_date,
+count(currency_code) as Per_date_Purchase
+from Sales group by Sales.order_date
+
+select (Sales.order_date),Products.product_name, sales.currency_code,
+if (sales.currency_code != 'usd',(Products.unit_cost_usd*exchange_rates.exchange),Products.unit_price_usd)
+from Sales 
+inner join exchange_rates on exchange_rates.date=Sales.order_date
+inner join Products on Products.productkey = sales.productkey
+
+SELECT
+    Productkey,
+    Product_Name,
+    Unit_Cost_USD,
+    Unit_Price_USD,
+    ((Unit_Price_USD - Unit_Cost_USD) / Unit_Price_USD) * 100 AS ProfitMarginPercentage
+FROM Products;
+
+select category,subcategory,unit_price_usd,product_name from Products
+
+
+select count(*) as female_Count, Age,continent  from Customers where Gender='female' group by Age,continent
+select count(*) as female_Count, Age,state  from Customers where Gender='female' group by Age,state
+
+select count(*) as Male_Count, Age,state  from Customers where Gender='male' group by Age,state
+select count(*) as FeMale_Count  from Customers where Gender='Female'
+
+select state  from Customers 
+inner join sales on sales.customerkey=Customers.customerkey
+
+
+
+
