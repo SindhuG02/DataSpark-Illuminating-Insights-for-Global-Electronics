@@ -9,4 +9,4 @@ getdata.py - 1) connect to SQL and create tables.
              3) remove null values and format the columns
              4) store it in the different tables
 
-once all the required details are stored in table. in sql_files
+once all the required details are stored in table. in sql_sheet.txt it contains all the SQL's used for powerBi
